@@ -9,7 +9,7 @@ interface Api {
     @GET("playlists")
     fun getPlaylists(
         @Query("part") part: String = "contentDetails, snippet",
-        @Query("channelId") channelId: String = "UCFiaumQAjtZwWlxdbgYP7vw",
+        @Query("channelId") channelId: String = "UCRtiU-lpcBSi-ipFKyfIkug",
         @Query("key") key: String = com.example.youtubeclone.BuildConfig.API_KEY,
         @Query("maxResults") maxResults: Int = 10,
     ) : Call<Playlist>
