@@ -2,14 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
         android:id="@+id/ivPlaylist"
         android:layout_width="@dimen/image_small_width"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/middle_margin"
-        android:background="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,7 +19,6 @@
         android:gravity="center"
         android:text="@string/playlist"
         android:textColor="@color/white"
-        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/ivPlaylist"
         app:layout_constraintEnd_toEndOf="@id/ivPlaylist"
         app:layout_constraintStart_toStartOf="@id/ivPlaylist" />
@@ -28,14 +26,15 @@
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/middle_margin"
         android:layout_marginTop="@dimen/middle_margin"
         android:text="@string/playlist_name"
-        android:textSize="@dimen/small_text_size"
+        android:textSize="@dimen/large_text_size"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@id/ivPlaylist"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
