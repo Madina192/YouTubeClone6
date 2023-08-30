@@ -16,12 +16,13 @@
         android:layout_width="@dimen/zero"
         android:layout_height="wrap_content"
         android:background="@color/dark_gray"
-        android:gravity="center"
         android:text="@string/playlist"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@id/ivPlaylist"
         app:layout_constraintEnd_toEndOf="@id/ivPlaylist"
-        app:layout_constraintStart_toStartOf="@id/ivPlaylist" />
+        app:layout_constraintStart_toStartOf="@id/ivPlaylist"
+        android:paddingStart="@dimen/large_padding"
+        />
 
 
     <TextView

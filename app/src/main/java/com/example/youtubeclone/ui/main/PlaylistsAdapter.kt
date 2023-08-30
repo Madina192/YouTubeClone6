@@ -6,16 +6,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
-import com.example.youtubeclone.data.model.Playlist
+import com.example.youtubeclone.data.model.PlaylistModel
 import com.example.youtubeclone.databinding.ItemPlaylistBinding
 
-class PlaylistAdapter : Adapter<PlaylistAdapter.PlaylistViewHolder>() {
+class PlaylistsAdapter : Adapter<PlaylistsAdapter.PlaylistViewHolder>() {
 
-    private var list = mutableListOf<Playlist.Item>()
+    private var list = mutableListOf<PlaylistModel.Item>()
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setList(model: Playlist) {
-        list = model.items.toMutableList()
+    fun setList(model: List<PlaylistModel.Item>?) {
+        list = model as MutableList<PlaylistModel.Item>
         notifyDataSetChanged()
     }
 
@@ -37,7 +37,7 @@ class PlaylistAdapter : Adapter<PlaylistAdapter.PlaylistViewHolder>() {
     inner class PlaylistViewHolder(private val binding: ItemPlaylistBinding) :
         ViewHolder(binding.root) {
         @SuppressLint("SetTextI18n")
-        fun onBind(playlistsModelItem: Playlist.Item) {
+        fun onBind(playlistsModelItem: PlaylistModel.Item) {
             with(binding) {
                 Glide.with(ivPlaylist).load(playlistsModelItem.snippet.thumbnails.default.url)
                     .into(ivPlaylist)

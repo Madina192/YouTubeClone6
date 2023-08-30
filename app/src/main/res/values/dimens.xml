@@ -6,4 +6,10 @@
     <dimen name="small_margin">8dp</dimen>
     <dimen name="image_small_width">120dp</dimen>
     <dimen name="large_text_size">20sp</dimen>
+    <dimen name="large_padding">48dp</dimen>
+    <dimen name="try_again_btn_width">328dp</dimen>
+    <dimen name="try_again_btn_height">40dp</dimen>
+    <dimen name="try_again_btn_bottom">32dp</dimen>
+    <dimen name="middle_text_size">16sp</dimen>
+    <dimen name="large_margin_24">24dp</dimen>
 </resources>

@@ -1,6 +1,6 @@
 package com.example.youtubeclone.data.model
 
-data class Playlist(
+data class PlaylistModel(
     val etag: String,
     val items: List<Item>,
     val kind: String,
