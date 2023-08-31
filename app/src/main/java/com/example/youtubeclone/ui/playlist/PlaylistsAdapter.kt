@@ -1,4 +1,4 @@
-package com.example.youtubeclone.ui.main
+package com.example.youtubeclone.ui.playlist
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,7 +9,8 @@ import com.bumptech.glide.Glide
 import com.example.youtubeclone.data.model.PlaylistModel
 import com.example.youtubeclone.databinding.ItemPlaylistBinding
 
-class PlaylistsAdapter : Adapter<PlaylistsAdapter.PlaylistViewHolder>() {
+class PlaylistsAdapter(private val onClick: (PlaylistModel.Item) -> Unit) :
+    Adapter<PlaylistsAdapter.PlaylistViewHolder>() {
 
     private var list = mutableListOf<PlaylistModel.Item>()
 
@@ -43,6 +44,9 @@ class PlaylistsAdapter : Adapter<PlaylistsAdapter.PlaylistViewHolder>() {
                     .into(ivPlaylist)
                 tvTitle.text = playlistsModelItem.snippet.title
                 tvNumber.text = "${playlistsModelItem.contentDetails.itemCount} video series"
+                cvPlaylist.setOnClickListener {
+                    onClick.invoke(playlistsModelItem)
+                }
             }
         }
     }

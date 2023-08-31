@@ -1,11 +1,12 @@
 package com.example.youtubeclone.data.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.liveData
 import com.example.youtubeclone.core.network.RemoteDataSource
 import com.example.youtubeclone.core.network.Resource
+import com.example.youtubeclone.data.model.PlaylistItemModel
 import com.example.youtubeclone.data.model.PlaylistModel
+import kotlinx.coroutines.Dispatchers
 
 
 class Repository {
@@ -13,9 +14,17 @@ class Repository {
     private val remoteDataSource = RemoteDataSource()
 
     fun getPlaylist(): LiveData<Resource<PlaylistModel>> {
-        val data = MutableLiveData<Resource<PlaylistModel>>()
-        data.postValue(remoteDataSource.getPlaylists())
-        Log.e("ololo", data.value?.data.toString())
-        return data
+        return liveData(Dispatchers.IO) {
+            emit(Resource.loading())
+            emit(remoteDataSource.getPlaylists())
+        }
+    }
+
+    fun getPlaylistItems(playlistId: String): LiveData<Resource<PlaylistItemModel>> {
+        return liveData(Dispatchers.IO) {
+            emit(Resource.loading())
+            val response = remoteDataSource.getPlaylistItems(playlistId)
+            emit(response)
+        }
     }
 }
