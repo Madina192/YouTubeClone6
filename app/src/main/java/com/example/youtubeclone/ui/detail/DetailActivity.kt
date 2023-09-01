@@ -13,6 +13,7 @@ import com.example.youtubeclone.ui.playlist.PlaylistsActivity.Companion.ID
 import com.example.youtubeclone.ui.playlist.PlaylistsActivity.Companion.ITEM_COUNT
 import com.example.youtubeclone.ui.playlist.PlaylistsActivity.Companion.TITLE
 import com.example.youtubeclone.utils.ConnectionLiveData
+import kotlinx.android.synthetic.main.activity_detail.toolbar
 
 
 class DetailActivity() : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
@@ -63,7 +64,10 @@ class DetailActivity() : BaseActivity<ActivityDetailBinding, DetailViewModel>() 
 
     override fun initView() {
         super.initView()
-        binding.recyclerView.adapter = adapter
+        binding.includeRecyclerView.recyclerView.adapter = adapter
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
     }
 
     override fun initListener() {
