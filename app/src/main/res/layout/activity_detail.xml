@@ -15,7 +15,7 @@
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/toolbar_layout"
+            android:id="@+id/collapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
@@ -107,21 +107,10 @@
             android:layout_marginHorizontal="@dimen/margin_16"
             android:layout_marginVertical="@dimen/margin_16"
             android:textSize="@dimen/text_size_12"
+            app:layout_collapseMode="parallax"
             tools:text="@string/number_of_video_series" />
 
     </com.google.android.material.appbar.AppBarLayout>
-
-    <include
-        android:id="@+id/includeRecyclerView"
-        layout="@layout/detail_content_scrolling" />
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminateTint="@color/red"
-        android:visibility="gone" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="@dimen/fab_size"
@@ -135,6 +124,18 @@
         app:layout_anchor="@id/ll_main"
         app:layout_anchorGravity="bottom|end"
         app:maxImageSize="@dimen/fab_icon_size" />
+
+    <include
+        android:id="@+id/includeRecyclerView"
+        layout="@layout/detail_content_scrolling" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/red"
+        android:visibility="gone" />
 
     <FrameLayout
         android:id="@+id/noConnection"

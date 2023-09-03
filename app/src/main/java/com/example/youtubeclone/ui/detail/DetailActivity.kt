@@ -3,7 +3,6 @@ package com.example.youtubeclone.ui.detail
 import android.annotation.SuppressLint
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.example.youtubeclone.core.base.BaseActivity
 import com.example.youtubeclone.core.network.Resource
 import com.example.youtubeclone.data.model.PlaylistItemModel
@@ -13,16 +12,14 @@ import com.example.youtubeclone.ui.playlist.PlaylistsActivity.Companion.ID
 import com.example.youtubeclone.ui.playlist.PlaylistsActivity.Companion.ITEM_COUNT
 import com.example.youtubeclone.ui.playlist.PlaylistsActivity.Companion.TITLE
 import com.example.youtubeclone.utils.ConnectionLiveData
-import kotlinx.android.synthetic.main.activity_detail.toolbar
-
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity() : BaseActivity<ActivityDetailBinding, DetailViewModel>() {
 
     override fun inflateViewBinding(): ActivityDetailBinding =
         ActivityDetailBinding.inflate(layoutInflater)
 
-    override fun initViewModel(): DetailViewModel =
-        ViewModelProvider(this)[DetailViewModel::class.java]
+    override val viewModel: DetailViewModel by viewModel()
 
     private val adapter = DetailAdapter()
 
@@ -65,14 +62,14 @@ class DetailActivity() : BaseActivity<ActivityDetailBinding, DetailViewModel>() 
     override fun initView() {
         super.initView()
         binding.includeRecyclerView.recyclerView.adapter = adapter
-        setSupportActionBar(toolbar)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowHomeEnabled(true)
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
+        //internet connection
     }
 
     override fun initListener() {
         super.initListener()
-        binding.imgBack.setOnClickListener {
+        binding.llBack.setOnClickListener {
             finish()
         }
     }

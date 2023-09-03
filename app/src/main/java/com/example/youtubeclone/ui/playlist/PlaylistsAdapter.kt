@@ -44,7 +44,7 @@ class PlaylistsAdapter(private val onClick: (PlaylistModel.Item) -> Unit) :
                     .into(ivPlaylist)
                 tvTitle.text = playlistsModelItem.snippet.title
                 tvNumber.text = "${playlistsModelItem.contentDetails.itemCount} video series"
-                cvPlaylist.setOnClickListener {
+                itemView.setOnClickListener {
                     onClick.invoke(playlistsModelItem)
                 }
             }

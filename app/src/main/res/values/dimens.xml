@@ -31,5 +31,6 @@
     <dimen name="tv_playlist_margin_105">105dp</dimen>
     <dimen name="ll_back_margin_50">50dp</dimen>
     <dimen name="collaps_tb_min_height">60dp</dimen>
+    <dimen name="tv_number_of_series_margin">156dp</dimen>
 
 </resources>

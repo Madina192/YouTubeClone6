@@ -9,9 +9,7 @@ import com.example.youtubeclone.data.model.PlaylistModel
 import kotlinx.coroutines.Dispatchers
 
 
-class Repository {
-
-    private val remoteDataSource = RemoteDataSource()
+class Repository(private val remoteDataSource: RemoteDataSource) {
 
     fun getPlaylist(): LiveData<Resource<PlaylistModel>> {
         return liveData(Dispatchers.IO) {
@@ -23,8 +21,7 @@ class Repository {
     fun getPlaylistItems(playlistId: String): LiveData<Resource<PlaylistItemModel>> {
         return liveData(Dispatchers.IO) {
             emit(Resource.loading())
-            val response = remoteDataSource.getPlaylistItems(playlistId)
-            emit(response)
+            emit(remoteDataSource.getPlaylistItems(playlistId))
         }
     }
 }

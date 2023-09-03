@@ -3,21 +3,20 @@ package com.example.youtubeclone.ui.playlist
 import android.content.Intent
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.ViewModelProvider
 import com.example.youtubeclone.core.base.BaseActivity
 import com.example.youtubeclone.core.network.Resource
 import com.example.youtubeclone.data.model.PlaylistModel
 import com.example.youtubeclone.databinding.ActivityPlaylistsBinding
 import com.example.youtubeclone.ui.detail.DetailActivity
 import com.example.youtubeclone.utils.ConnectionLiveData
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaylistsActivity : BaseActivity<ActivityPlaylistsBinding, PlaylistsViewModel>() {
 
     override fun inflateViewBinding(): ActivityPlaylistsBinding =
         ActivityPlaylistsBinding.inflate(layoutInflater)
 
-    override fun initViewModel(): PlaylistsViewModel =
-        ViewModelProvider(this)[PlaylistsViewModel::class.java]
+    override val viewModel: PlaylistsViewModel by viewModel()
 
     private val adapter = PlaylistsAdapter(this::onClick)
 

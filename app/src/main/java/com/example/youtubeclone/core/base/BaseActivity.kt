@@ -11,17 +11,13 @@ abstract class BaseActivity<
         > : AppCompatActivity() {
 
     protected lateinit var binding: VB
-    protected lateinit var viewModel: VM
-
+    protected abstract val viewModel: VM
     protected abstract fun inflateViewBinding(): VB
-    protected abstract fun initViewModel(): VM
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = inflateViewBinding()
         setContentView(binding.root)
-
-        viewModel = initViewModel()
 
         checkInternetConnection()
         initView()

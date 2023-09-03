@@ -2,12 +2,10 @@ package com.example.youtubeclone.core.network
 
 import com.example.youtubeclone.BuildConfig
 import com.example.youtubeclone.core.base.BaseDataSource
-import com.example.youtubeclone.data.model.PlaylistItemModel
+import com.example.youtubeclone.data.remote.PlaylistApiService
 import com.example.youtubeclone.utils.Constants
 
-class RemoteDataSource : BaseDataSource() {
-
-    private val apiService = RetrofitService.getApiService()
+class RemoteDataSource(private val apiService: PlaylistApiService) : BaseDataSource() {
 
     suspend fun getPlaylists() = getResult {
         apiService.getPlaylists(
@@ -18,14 +16,12 @@ class RemoteDataSource : BaseDataSource() {
         )
     }
 
-    suspend fun getPlaylistItems(playlistId: String): Resource<PlaylistItemModel> {
-        return getResult {
-            apiService.getPlaylistItems(
-                key = BuildConfig.API_KEY,
-                part = Constants.PART,
-                playlistId = playlistId,
-                maxResults = 20
-            )
-        }
+    suspend fun getPlaylistItems(playlistId: String) = getResult {
+        apiService.getPlaylistItems(
+            key = BuildConfig.API_KEY,
+            part = Constants.PART,
+            playlistId = playlistId,
+            maxResults = 20
+        )
     }
 }
