@@ -77,9 +77,9 @@ class DetailActivity() : BaseActivity<ActivityDetailBinding, DetailViewModel>() 
     override fun checkInternetConnection() {
         super.checkInternetConnection()
         ConnectionLiveData(application).observe(this) { isConnection ->
-            if (isConnection) {
-                binding.mainContainer.visibility = View.VISIBLE
-                binding.noConnection.visibility = View.GONE
+            if (!isConnection) {
+                binding.mainContainer.visibility = View.GONE
+                binding.noConnection.visibility = View.VISIBLE
             }
             binding.noInternetConnectionInclude.btnTryAgain.setOnClickListener {
                 if (!isConnection) {
