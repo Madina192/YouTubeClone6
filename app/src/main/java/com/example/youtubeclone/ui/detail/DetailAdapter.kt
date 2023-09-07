@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.youtubeclone.data.model.PlaylistItemModel
+import com.example.youtubeclone.data.model.PlaylistModel
 import com.example.youtubeclone.databinding.ItemDetailBinding
 
-class DetailAdapter : RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
+class DetailAdapter(private val onClick: (PlaylistItemModel.Item) -> Unit) : RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
 
     private var list = mutableListOf<PlaylistItemModel.Item>()
 
@@ -42,6 +43,9 @@ class DetailAdapter : RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
                 tvDuration.text = playlistsModelItem.snippet?.publishedAt
                 Glide.with(ivDetail).load(playlistsModelItem.snippet?.thumbnails?.default?.url)
                     .into(ivDetail)
+                itemView.setOnClickListener {
+                    onClick.invoke(playlistsModelItem)
+                }
             }
         }
     }

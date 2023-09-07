@@ -12,4 +12,5 @@
     <string name="play">play</string>
     <string name="number_of_video_series">number of video series</string>
     <string name="example_duration">04:14</string>
+    <string name="download">Download</string>
 </resources>

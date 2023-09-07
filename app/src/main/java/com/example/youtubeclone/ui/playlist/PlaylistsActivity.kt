@@ -9,6 +9,10 @@ import com.example.youtubeclone.data.model.PlaylistModel
 import com.example.youtubeclone.databinding.ActivityPlaylistsBinding
 import com.example.youtubeclone.ui.detail.DetailActivity
 import com.example.youtubeclone.utils.ConnectionLiveData
+import com.example.youtubeclone.utils.Constants.PLAYLIST_ID
+import com.example.youtubeclone.utils.Constants.PLAYLIST_TITLE
+import com.example.youtubeclone.utils.Constants.PLAYLIST_DESCRIPTION
+import com.example.youtubeclone.utils.Constants.VIDEO_ITEM_COUNT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlaylistsActivity : BaseActivity<ActivityPlaylistsBinding, PlaylistsViewModel>() {
@@ -69,22 +73,15 @@ class PlaylistsActivity : BaseActivity<ActivityPlaylistsBinding, PlaylistsViewMo
 
     private fun onClick(item: PlaylistModel.Item) {
         val intent = Intent(this, DetailActivity::class.java)
-        intent.putExtra(ID, item.id)
-        intent.putExtra(TITLE, item.snippet.title)
-        intent.putExtra(DESCRIPTION, item.snippet.description)
-        intent.putExtra(ITEM_COUNT, item.contentDetails.itemCount.toString())
+        intent.putExtra(PLAYLIST_ID, item.id)
+        intent.putExtra(PLAYLIST_TITLE, item.snippet.title)
+        intent.putExtra(PLAYLIST_DESCRIPTION, item.snippet.description)
+        intent.putExtra(VIDEO_ITEM_COUNT, item.contentDetails.itemCount.toString())
         startActivity(intent)
     }
 
     override fun initView() {
         super.initView()
         binding.recyclerView.adapter = adapter
-    }
-
-    companion object {
-        const val ID = "id"
-        const val TITLE = "title"
-        const val DESCRIPTION = "description"
-        const val ITEM_COUNT = "item_count"
     }
 }
