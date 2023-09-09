@@ -1,6 +1,6 @@
 package com.example.youtubeclone.core.network
 
-import com.example.youtubeclone.data.remote.PlaylistApiService
+import com.example.youtubeclone.data.remote.YoutubeApiService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -37,6 +37,6 @@ fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         .build()
 }
 
-fun provideApi(retrofit: Retrofit): PlaylistApiService {
-    return retrofit.create(PlaylistApiService::class.java)
+fun provideApi(retrofit: Retrofit): YoutubeApiService {
+    return retrofit.create(YoutubeApiService::class.java)
 }

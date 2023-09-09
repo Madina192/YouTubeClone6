@@ -31,10 +31,10 @@ class DetailActivity() : BaseActivity<ActivityDetailBinding, DetailViewModel>() 
 
     private fun onClick(item: PlaylistItemModel.Item) {
         val intent = Intent(this, PlayActivity::class.java)
-        intent.putExtra(VIDEO_ITEM_ID, item.id)
         intent.putExtra(VIDEO_ID, item.contentDetails?.videoId)
         intent.putExtra(VIDEO_TITLE, item.snippet?.title)
         intent.putExtra(VIDEO_DESCRIPTION, item.snippet?.description)
+        startActivity(intent)
     }
 
     @SuppressLint("SetTextI18n")

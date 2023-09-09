@@ -2,10 +2,10 @@ package com.example.youtubeclone.core.network
 
 import com.example.youtubeclone.BuildConfig
 import com.example.youtubeclone.core.base.BaseDataSource
-import com.example.youtubeclone.data.remote.PlaylistApiService
+import com.example.youtubeclone.data.remote.YoutubeApiService
 import com.example.youtubeclone.utils.Constants
 
-class RemoteDataSource(private val apiService: PlaylistApiService) : BaseDataSource() {
+class RemoteDataSource(private val apiService: YoutubeApiService) : BaseDataSource() {
 
     suspend fun getPlaylists() = getResult {
         apiService.getPlaylists(
