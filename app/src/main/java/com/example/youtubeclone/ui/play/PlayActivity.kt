@@ -2,6 +2,8 @@ package com.example.youtubeclone.ui.play
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
+import android.os.Bundle
+import android.util.Log
 import android.view.View
 import com.example.youtubeclone.R
 import com.example.youtubeclone.core.base.BaseActivity
@@ -32,20 +34,15 @@ class PlayActivity() : BaseActivity<ActivityPlayBinding, PlayViewModel>() {
     private var currentItem = 0
     private var playbackPosition = 0L
     private fun exoPlayerInit() {
-        getIntentVideoId = intent.getStringExtra(VIDEO_ID)
-        exoPlayer = ExoPlayer.Builder(this)
-            .build()
+        getIntentVideoId = intent.getStringExtra(VIDEO_ID) //didn't use it
+        exoPlayer = ExoPlayer.Builder(this).build()
         binding.playerView.player = exoPlayer
         exoPlayer?.playWhenReady = true
-        val defaultHttpDataSourceFactory = DefaultHttpDataSource.Factory()
         val mediaItem =
-            MediaItem.fromUri("https://www.dailymotion.com/video/x8ntwc5") //it doesn't work
-        val mediaSource =
-            DashMediaSource.Factory(defaultHttpDataSourceFactory).createMediaSource(mediaItem)
+            MediaItem.fromUri("https://storage.googleapis.com/exoplayer-test-media-0/BigBuckBunny_320x180.mp4") //change the link
         exoPlayer?.setMediaItem(mediaItem)
-        //exoPlayer.prepare()
+        exoPlayer?.prepare()
         exoPlayer?.seekTo(currentItem, playbackPosition)
-        exoPlayer?.setMediaSource(mediaSource)
         exoPlayer?.playWhenReady = playWhenReady
         exoPlayer?.prepare()
     }
@@ -60,46 +57,14 @@ class PlayActivity() : BaseActivity<ActivityPlayBinding, PlayViewModel>() {
         exoPlayer = null
     }
 
-    override fun onStart() {
-        super.onStart()
-        exoPlayerInit()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        exoPlayerInit()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        exoPlayerRelease()
-    }
-
-    override fun onStop() {
-        super.onStop()
-        exoPlayerRelease()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        exoPlayerRelease()
-    }
-
-    @SuppressLint("SetTextI18n")
-    override fun initLiveData() {
-        super.initLiveData()
-    }
-
     override fun initView() {
         super.initView()
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
         getIntentDesc = intent.getStringExtra(VIDEO_DESCRIPTION)
         getIntentTitle = intent.getStringExtra(VIDEO_TITLE)
-        with(binding) {
-            tvTitle.text = getIntentTitle
-            tvDescr.text = getIntentDesc
-        }
+        binding.tvTitle.text = getIntentTitle
+        binding.tvDescr.text = getIntentDesc
     }
 
     override fun initListener() {
@@ -140,5 +105,31 @@ class PlayActivity() : BaseActivity<ActivityPlayBinding, PlayViewModel>() {
                 }
             }
         }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        exoPlayerInit()
+    }
+
+    override fun onStart() {
+        super.onStart()
+        exoPlayerInit()
+        Log.e("ololo", "onStart: started ")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        exoPlayerInit()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        exoPlayerRelease()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        exoPlayerRelease()
     }
 }
