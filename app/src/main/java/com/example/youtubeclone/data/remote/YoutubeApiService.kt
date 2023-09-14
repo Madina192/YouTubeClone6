@@ -1,7 +1,6 @@
 package com.example.youtubeclone.data.remote
 
-import com.example.youtubeclone.data.model.PlaylistItemModel
-import com.example.youtubeclone.data.model.PlaylistModel
+import com.example.youtubeclone.data.model.PlaylistsModel
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -12,14 +11,16 @@ interface YoutubeApiService {
         @Query("part") part: String,
         @Query("channelId") channelId: String,
         @Query("key") key: String,
+        @Query("pageToken") pageToken: String,
         @Query("maxResults") maxResults: Int,
-    ): Response<PlaylistModel>
+    ): Response<PlaylistsModel>
 
     @GET("playlistItems")
     suspend fun getPlaylistItems(
         @Query("part") part: String,
         @Query("playlistId") playlistId: String,
         @Query("key") key: String,
+        @Query("pageToken") pageToken: String,
         @Query("maxResults") maxResults: Int
-    ): Response<PlaylistItemModel>
+    ): Response<PlaylistsModel>
 }

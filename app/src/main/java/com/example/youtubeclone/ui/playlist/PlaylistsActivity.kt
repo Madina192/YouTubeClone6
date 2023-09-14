@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.Toast
 import com.example.youtubeclone.core.base.BaseActivity
 import com.example.youtubeclone.core.network.Resource
-import com.example.youtubeclone.data.model.PlaylistModel
+import com.example.youtubeclone.data.model.PlaylistsModel
 import com.example.youtubeclone.databinding.ActivityPlaylistsBinding
 import com.example.youtubeclone.ui.detail.DetailActivity
 import com.example.youtubeclone.utils.ConnectionLiveData
@@ -71,7 +71,7 @@ class PlaylistsActivity : BaseActivity<ActivityPlaylistsBinding, PlaylistsViewMo
         }
     }
 
-    private fun onClick(item: PlaylistModel.Item) {
+    private fun onClick(item: PlaylistsModel.Item) {
         val intent = Intent(this, DetailActivity::class.java)
         intent.putExtra(PLAYLIST_ID, item.id)
         intent.putExtra(PLAYLIST_TITLE, item.snippet.title)

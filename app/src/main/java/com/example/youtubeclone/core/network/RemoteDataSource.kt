@@ -7,18 +7,20 @@ import com.example.youtubeclone.utils.Constants
 
 class RemoteDataSource(private val apiService: YoutubeApiService) : BaseDataSource() {
 
-    suspend fun getPlaylists() = getResult {
+    suspend fun getPlaylists(nextPageToken: String) = getResult {
         apiService.getPlaylists(
             key = BuildConfig.API_KEY,
+            pageToken = nextPageToken,
             part = Constants.PART,
             channelId = Constants.CHANNEL_ID,
             maxResults = 10
         )
     }
 
-    suspend fun getPlaylistItems(playlistId: String) = getResult {
+    suspend fun getPlaylistItems(playlistId: String, nextPageToken: String) = getResult {
         apiService.getPlaylistItems(
             key = BuildConfig.API_KEY,
+            pageToken = nextPageToken,
             part = Constants.PART,
             playlistId = playlistId,
             maxResults = 20

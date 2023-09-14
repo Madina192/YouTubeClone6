@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.youtubeclone.data.model.PlaylistItemModel
-import com.example.youtubeclone.data.model.PlaylistModel
 import com.example.youtubeclone.databinding.ItemDetailBinding
 
-class DetailAdapter(private val onClick: (PlaylistItemModel.Item) -> Unit) : RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
+class DetailAdapter(private val onClick: (PlaylistItemModel.Item) -> Unit) :
+    RecyclerView.Adapter<DetailAdapter.DetailViewHolder>() {
 
     private var list = mutableListOf<PlaylistItemModel.Item>()
 

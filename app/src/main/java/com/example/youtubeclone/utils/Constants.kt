@@ -11,4 +11,5 @@ object Constants {
     const val VIDEO_ID = "video_id"
     const val VIDEO_TITLE = "video_title"
     const val VIDEO_DESCRIPTION = "video_description"
+    const val EMPTY_STRING = ""
 }

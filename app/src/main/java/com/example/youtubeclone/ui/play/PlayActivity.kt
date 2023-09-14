@@ -1,6 +1,5 @@
 package com.example.youtubeclone.ui.play
 
-import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
@@ -14,8 +13,6 @@ import com.example.youtubeclone.utils.Constants.VIDEO_ID
 import com.example.youtubeclone.utils.Constants.VIDEO_TITLE
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
-import com.google.android.exoplayer2.source.dash.DashMediaSource
-import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PlayActivity() : BaseActivity<ActivityPlayBinding, PlayViewModel>() {

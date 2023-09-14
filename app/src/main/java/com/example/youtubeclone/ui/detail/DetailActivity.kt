@@ -10,14 +10,13 @@ import com.example.youtubeclone.data.model.PlaylistItemModel
 import com.example.youtubeclone.databinding.ActivityDetailBinding
 import com.example.youtubeclone.ui.play.PlayActivity
 import com.example.youtubeclone.utils.ConnectionLiveData
-import com.example.youtubeclone.utils.Constants.VIDEO_ITEM_ID
-import com.example.youtubeclone.utils.Constants.VIDEO_ID
-import com.example.youtubeclone.utils.Constants.VIDEO_TITLE
-import com.example.youtubeclone.utils.Constants.VIDEO_DESCRIPTION
+import com.example.youtubeclone.utils.Constants.PLAYLIST_DESCRIPTION
 import com.example.youtubeclone.utils.Constants.PLAYLIST_ID
 import com.example.youtubeclone.utils.Constants.PLAYLIST_TITLE
-import com.example.youtubeclone.utils.Constants.PLAYLIST_DESCRIPTION
+import com.example.youtubeclone.utils.Constants.VIDEO_DESCRIPTION
+import com.example.youtubeclone.utils.Constants.VIDEO_ID
 import com.example.youtubeclone.utils.Constants.VIDEO_ITEM_COUNT
+import com.example.youtubeclone.utils.Constants.VIDEO_TITLE
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailActivity() : BaseActivity<ActivityDetailBinding, DetailViewModel>() {

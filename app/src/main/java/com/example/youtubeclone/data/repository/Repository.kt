@@ -1,27 +1,33 @@
 package com.example.youtubeclone.data.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.liveData
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
+import androidx.paging.liveData
 import com.example.youtubeclone.core.network.RemoteDataSource
-import com.example.youtubeclone.core.network.Resource
-import com.example.youtubeclone.data.model.PlaylistItemModel
-import com.example.youtubeclone.data.model.PlaylistModel
-import kotlinx.coroutines.Dispatchers
-
+import com.example.youtubeclone.data.model.PlaylistsModel
+import com.example.youtubeclone.data.paging.DetailsPagingSource
+import com.example.youtubeclone.data.paging.PlaylistsPagingSource
 
 class Repository(private val remoteDataSource: RemoteDataSource) {
 
-    fun getPlaylist(): LiveData<Resource<PlaylistModel>> {
-        return liveData(Dispatchers.IO) {
-            emit(Resource.loading())
-            emit(remoteDataSource.getPlaylists())
-        }
+    fun getPlaylist(): LiveData<PagingData<PlaylistsModel.Item>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10),
+            pagingSourceFactory = { PlaylistsPagingSource(remoteDataSource = remoteDataSource) }
+        ).liveData
     }
 
-    fun getPlaylistItems(playlistId: String): LiveData<Resource<PlaylistItemModel>> {
-        return liveData(Dispatchers.IO) {
-            emit(Resource.loading())
-            emit(remoteDataSource.getPlaylistItems(playlistId))
-        }
+    fun getPlaylistItems(playlistId: String): LiveData<PagingData<PlaylistsModel.Item>> {
+        return Pager(
+            config = PagingConfig(pageSize = 10),
+            pagingSourceFactory = {
+                DetailsPagingSource(
+                    remoteDataSource = remoteDataSource,
+                    playlistId = playlistId
+                )
+            }
+        ).liveData
     }
 }
